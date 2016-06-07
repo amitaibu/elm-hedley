@@ -29,9 +29,12 @@ update companies action model =
             Just val ->
               -- Make sure the given company ID is a valid one.
               if ((isValidCompany val) > 0)
-                then {model | eventCompanyFilter = Just val}
-                else {model | eventCompanyFilter = Nothing}
+                then { eventCompanyFilter = Just val
+                     , timesChanged = model.timesChanged + 1}
+                else { eventCompanyFilter = Nothing
+                     , timesChanged = model.timesChanged}
             Nothing ->
-              {model | eventCompanyFilter = Nothing}
+              { eventCompanyFilter = Nothing
+              , timesChanged = model.timesChanged}
       in
         eventCompanyFilter
