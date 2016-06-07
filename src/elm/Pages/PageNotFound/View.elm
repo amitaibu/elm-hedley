@@ -1,8 +1,7 @@
 module Pages.PageNotFound.View where
 
-import Html exposing (a, i, div, h2, text, Html)
-import Html.Attributes exposing (class, id, href, style)
-
+import Html exposing (a, i, div, h2, text, img,  Html)
+import Html.Attributes exposing (class, id, href, style, src)
 -- VIEW
 
 view : Html
@@ -13,10 +12,12 @@ view =
     ]
     [ div
         [ class "wrapper text-center" ]
-        [
-        div
+        [ div
           [ class "box" ]
           [ h2 [] [ text "This is a 404 page!" ]
+          , div [] [
+            img [ src "https://unsplash.it/200/300/?random"] []
+          ]
           , a [ href "#!/" ] [ text "Back to safety" ]
           ]
         ]
