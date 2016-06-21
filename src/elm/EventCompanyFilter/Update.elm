@@ -29,9 +29,9 @@ update companies action model =
             Just val ->
               -- Make sure the given company ID is a valid one.
               if ((isValidCompany val) > 0)
-                then {companyId = Just val, clickCount = 0}
-                else {companyId = Nothing, clickCount = 4}
+                then {model | companyId = Just val, clickCount = model.clickCount +1}
+                else {model | companyId = Nothing, clickCount = model.clickCount +1}
             Nothing ->
-              {companyId = Nothing, clickCount = 5}
+              {model |companyId = Nothing, clickCount = model.clickCount +1}
       in
         eventCompanyFilter

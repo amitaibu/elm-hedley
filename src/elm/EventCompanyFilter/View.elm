@@ -58,9 +58,14 @@ companyListForSelect address companies eventCompanyFilter  =
     getOption company =
       option [value <| toString company.id, selected (company.id == selectedId)] [ text company.label]
   in
-    select
+    div []
+    [select
       [ class "companies"
       , value selectedText
-      , on "change" targetValue (\str -> Signal.message address <| EventCompanyFilter.Update.SelectCompany <| textToMaybe str)
+      , on "click" targetValue (\str -> Signal.message address <| EventCompanyFilter.Update.SelectCompany <| textToMaybe str)
       ]
       (List.map getOption companies')
+      ,span [class "badge"]
+       [text (toString eventCompanyFilter.clickCount)
+       ]
+    ]
