@@ -27,7 +27,7 @@ companyListForSelect : Signal.Address Action -> List Company.Model -> Model -> H
 companyListForSelect address companies eventCompanyFilter  =
   let
     selectedText =
-      case eventCompanyFilter of
+      case eventCompanyFilter.companyId of
         Just id -> toString id
         Nothing -> ""
 
@@ -49,7 +49,7 @@ companyListForSelect address companies eventCompanyFilter  =
 
     -- The selected company ID.
     selectedId =
-      case eventCompanyFilter of
+      case eventCompanyFilter.companyId of
         Just id ->
           id
         Nothing ->
